@@ -1,0 +1,146 @@
+/* Container */
+.admin-container {
+  background: var(--secondary-color);
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 1000px;
+  margin: 20px auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Tab Buttons */
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.tab-btn {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  background: var(--primary-color);
+  color: white;
+  transition: 0.3s;
+}
+
+.tab-btn:hover {
+  background: #5948d6;
+}
+
+.tab-btn.active {
+  background: #4a3cbf;
+  font-weight: bold;
+}
+
+/* User Cards */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.user-card {
+  background: rgba(25, 26, 44, 0.57);
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  width: 280px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+.user-card:hover {
+  transform: translateY(-5px);
+}
+
+.user-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid var(--primary-color);
+}
+
+.user-status {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffa500;
+}
+.no-data {
+  text-align: center;
+  font-weight: bold;
+  color: #ccc;
+  padding: 10px;
+  font-size: 14px;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+/* Search Filter */
+.filter-container {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.filter-input {
+  width: 50%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid var(--primary-color);
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.filter-input::placeholder {
+  color: var(--placeholder-color);
+}
+
+.filter-input:focus {
+  border-color: #4a3cbf;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .filter-input {
+    width: 80%;
+  }
+}

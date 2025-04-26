@@ -1,0 +1,106 @@
+<app-header></app-header>
+<div class="yacht-container">
+<h1 class="title">
+  {{ role === 'owner' ? 'Mes yachts' : 'Yachts disponibles' }}
+</h1>
+
+<div *ngIf="yachts.length == 0" class="empty-message">
+  <p *ngIf="role === 'owner'">Vous n'avez encore ajouté aucun yacht.</p>
+  <p *ngIf="role !== 'owner'">Aucun yacht disponible pour le moment.</p>
+</div>
+
+<div class="yacht-list">
+  <div *ngFor="let yacht of yachts" class="yacht-card"
+       (click)="goToBooking(yacht)"
+       [class.clickable]="role !== 'owner'">
+
+
+
+
+<span *ngIf="role === 'owner' && yacht.averageRating">
+      <div class="rating-container"
+           (click)="showReviews(yacht)">
+
+  <span *ngFor="let star of [1,2,3,4,5]" class="star"
+        [class.filled]="star <= yacht.averageRating">★</span>
+    </div>
+</span>
+    <span *ngIf="role != 'owner' && yacht.averageRating">
+      <div class="rating-container"
+           (mouseenter)="showReviews(yacht)">
+  <span *ngFor="let star of [1,2,3,4,5]" class="star"
+        [class.filled]="star <= yacht.averageRating">★</span>
+    </div>
+</span>
+
+
+    <div *ngIf="role === 'owner' && !yacht.isValidatedByAdmin" class="verification-status">
+      ⏳ En attente
+    </div>
+
+    <div *ngIf="role === 'owner' && yacht.isValidatedByAdmin" class="icon-container"
+         (click)="togglePublicStatus(yacht); $event.stopPropagation()"
+         [title]="yacht.isPublic ? 'Rendre Privé' : 'Rendre Public'">
+      <i [ngClass]="yacht.isPublic ? 'icon-public' : 'icon-private'"></i>
+    </div>
+
+    <div class="image-container">
+      <img [src]="getUrl(yacht.images[currentImageIndex[yacht._id]]) || 'assets/img/default-yacht.jpg'"
+           alt="{{ yacht.name }}"
+           class="yacht-image"
+           (mouseenter)="pauseAutoSlide(yacht._id)"
+           (mouseleave)="resumeAutoSlide(yacht._id)"/>
+      <button class="next-btn" (click)="nextImage(yacht, $event)">&#10095;</button>
+    </div>
+
+    <div class="yacht-info">
+      <h3 class="yacht-title">{{ yacht.name }}</h3>
+      <div class="description">
+  <span *ngIf="!expandedDescriptions[yacht._id]">
+    {{ yacht.description.length > 100 ? (yacht.description | slice:0:100) + '...' : yacht.description }}
+  </span>
+        <span *ngIf="expandedDescriptions[yacht._id]">
+    {{ yacht.description }}
+  </span>
+        <span class="toggle-description" (click)="toggleDescription(yacht._id, $event)">
+    {{ expandedDescriptions[yacht._id] ? 'Afficher moins' : yacht.description.length > 100 ? 'Afficher plus' :'' }}
+  </span>
+      </div>
+
+      <div class="yacht-meta">
+        <span class="price">{{ yacht.pricePerDay  }} Dt/Jour</span>
+        <span class="capacity">👥 {{ yacht.capacity }}</span>
+      </div>
+    </div>
+
+
+    <div class="actions" >
+      <button class="btn edit" *ngIf="role === 'owner'" (click)="editYacht(yacht); $event.stopPropagation()">Modifier</button>
+      <button class="btn location" (click)="openLocationModal(yacht); $event.stopPropagation()">Consulter la Position</button>
+      <button class="btn delete"*ngIf="role === 'owner'" (click)="deleteYacht(yacht._id); $event.stopPropagation()">Supprimer</button>
+    </div>
+  </div>
+</div>
+</div>
+<div class="modal" *ngIf="isMapModalOpen">
+  <div class="modal-content">
+    <span class="close" (click)="closeMapModal()">&times;</span>
+    <h3>Position du Yacht</h3>
+
+    <google-map
+      height="400px" width="100%"
+      [center]="center"
+      [zoom]="zoom"
+      >
+
+      <map-marker
+        #marker
+        [position]="center"
+        [options]="{draggable: true}"
+         >
+      </map-marker>
+
+    </google-map>
+
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="image-section">
+    <img src="assets/img/default/yacht_modern2.webp" alt="Yacht moderne" class="yacht-image" />
+  </div>
+  <div class="form-section">
+    <h2>Connexion</h2>
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="email">Adresse e-mail</label>
+        <input
+          class="input-field"
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="user.email"
+          placeholder="Entrez votre adresse e-mail"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <input
+          class="input-field"
+          type="password"
+          id="password"
+          name="password"
+          [(ngModel)]="user.password"
+          placeholder="Entrez votre mot de passe"
+          required
+        />
+      </div>
+      <button type="submit" class="btn" [disabled]="!loginForm.valid">Se connecter</button>
+    </form>
+    <div class="register-link">
+      <p>Pas encore de compte ? <a (click)="goToRegister()">Créer un compte</a></p>
+    </div>
+  </div>
+</div>

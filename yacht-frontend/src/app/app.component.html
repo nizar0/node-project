@@ -1,0 +1,18 @@
+<div class="app-container">
+  <header class="app-header" *ngIf="showSidebar">
+  </header>
+  <main class="app-main">
+    <div *ngIf="showSidebar; else noSidebar" class="dashboard-layout">
+      <app-sidebar></app-sidebar>
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    <ng-template #noSidebar>
+      <router-outlet></router-outlet>
+    </ng-template>
+  </main>
+  <footer class="app-footer" *ngIf="showSidebar">
+    <!-- Footer Content -->
+  </footer>
+</div>

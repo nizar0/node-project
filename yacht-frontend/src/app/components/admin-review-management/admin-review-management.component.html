@@ -1,0 +1,46 @@
+<app-header/>
+<div class="admin-container">
+  <h2 class="text-center">Gestion des Avis</h2>
+
+  <div *ngIf="pendingReviews.length === 0" class="no-reviews">
+    Aucun avis en attente de validation.
+  </div>
+
+  <div class="review-list">
+    <div *ngFor="let review of pendingReviews" class="review-card">
+      <div class="review-header">
+        <img [src]="getUrl(review.client.image) || 'assets/default-avatar.png'" class="client-avatar" />
+        <div>
+          <h5>{{ review.client.name }}</h5>
+          <p class="date">{{ review.createdAt | date:'yyyy/MM/dd hh:mm a' }}</p>
+        </div>
+      </div>
+
+      <!-- Shortened Comment with "Lire la suite" -->
+      <p *ngIf="!review.expanded" class="review-text">
+        <span>{{ review.comment.length > 100 ? (review.comment | slice:0:100) + '...' : review.comment }}</span>
+        <span *ngIf="review.comment.length > 100" class="read-more" (click)="toggleExpand(review)">Lire la suite</span>
+      </p>
+
+      <!-- Full Comment (Expands on Click) -->
+      <p class="full-review-text" *ngIf="review.expanded">
+        {{ review.comment }}
+        <span class="read-more" (click)="toggleExpand(review)">Lire moins</span>
+      </p>
+
+      <div class="rating">
+        <span *ngFor="let star of [1,2,3,4,5]" class="star"
+              [class.filled]="star <= review.rating">★</span>
+      </div>
+
+      <div class="review-actions">
+        <button class="btn-approve" (click)="approveReview(review._id)">
+          <i class="fas fa-check-circle"></i> Approuver
+        </button>
+        <button class="btn-delete" (click)="deleteReview(review._id)">
+          <i class="fas fa-trash-alt"></i> Supprimer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

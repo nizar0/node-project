@@ -1,0 +1,94 @@
+<app-header/>
+<div class="admin-container">
+  <h2 class="text-center">Gestion des Yachts</h2>
+
+
+    <div class="tab-buttons">
+    <button class="nav-btn" [ngClass]="{ 'active': selectedTab === 'pending' }" (click)="selectTab('pending')">
+      Yachts en attente
+    </button>
+    <button class="nav-btn" [ngClass]="{ 'active': selectedTab === 'validated' }" (click)="selectTab('validated')">
+      Yachts validés
+    </button>
+  </div>
+
+  <div class="tab-content">
+    <!-- Pending Yachts -->
+    <div *ngIf="selectedTab === 'pending'">
+      <h3>Yachts en attente de validation</h3>
+      <div *ngIf="pendingYachts.length === 0" class="no-yachts">
+        Aucun yacht en attente de validation.
+      </div>
+      <div class="card-container" *ngIf="pendingYachts.length != 0">
+        <div *ngFor="let yacht of pendingYachts; let i = index" class="yacht-card">
+
+          <!-- Image container with controls -->
+          <div class="image-container">
+            <img [src]="getUrl(currentImage[i])" class="yacht-image" />
+            <button class="next-btn" (click)="nextImage(i, yacht)">&#10095;</button>
+          </div>
+
+          <h5>{{ yacht.name }}</h5>
+
+          <!-- Owner info with image -->
+          <div class="owner-info">
+            <img [src]="getUrl(yacht.owner.image) || 'assets/default-avatar.png'" class="owner-avatar" />
+            <p>{{ yacht.owner.name }}</p>
+          </div>
+
+          <p>Prix: {{ yacht.pricePerDay }} DT / jour</p>
+          <div class="yacht-status">⏳ En attente</div>
+          <div class="action-buttons">
+            <button class="btn btn-success" (click)="approveYacht(yacht)">✅ Approuver</button>
+            <button class="btn btn-info" (click)="openMapModal(yacht)">Position</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Validated Yachts -->
+    <div *ngIf="selectedTab === 'validated'">
+
+
+      <h3>Yachts validés</h3>
+      <div *ngIf="validatedYachts.length === 0" class="no-yachts">
+        Aucun yacht validé pour le moment.
+      </div>
+      <div class="card-container" *ngIf="validatedYachts.length != 0">
+        <div *ngFor="let yacht of validatedYachts; let i = index" class="yacht-card">
+
+          <div class="image-container">
+            <img [src]="getUrl(currentImage[i])" class="yacht-image" />
+            <button class="next-btn" (click)="nextImage(i, yacht)">&#10095;</button>
+          </div>
+
+          <h5>{{ yacht.name }}</h5>
+
+          <div class="owner-info">
+            <img [src]="getUrl(yacht.owner.image) || 'assets/default-avatar.png'" class="owner-avatar" />
+            <p>{{ yacht.owner.name }}</p>
+          </div>
+
+          <p>Prix: {{ yacht.pricePerDay }} DT / jour</p>
+          <div class="yacht-status validated">✅ Validé</div>
+          <div class="action-buttons">
+            <button class="btn btn-danger" (click)="approveYacht(yacht)">🚫 Bloquer</button>
+            <button class="btn btn-info" (click)="openMapModal(yacht)">Position</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="modal" *ngIf="isMapModalOpen">
+  <div class="modal-content">
+    <span class="close" (click)="closeMapModal()">&times;</span>
+    <h3>Position du Yacht</h3>
+
+    <google-map height="400px" width="100%" [center]="center" [zoom]="zoom">
+      <map-marker #marker [position]="center"></map-marker>
+    </google-map>
+  </div>
+</div>

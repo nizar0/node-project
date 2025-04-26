@@ -1,0 +1,111 @@
+/* 🌟 Conteneur principal */
+.profile-container {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 40px auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+/* 📸 Image de profil */
+.profile-image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.profile-image-label {
+  cursor: pointer;
+  display: block;
+}
+
+.profile-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #6c63ff;
+  transition: transform 0.3s ease-in-out;
+}
+
+.profile-image:hover {
+  transform: scale(1.05);
+}
+
+
+input[type="file"] {
+  display: none;
+}
+
+.profile-image-container label {
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* 🎯 Champs du formulaire */
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+}
+
+.form-group input:focus {
+  border: 2px solid var(--primary-color);
+  outline: none;
+}
+
+/* 🎭 Boutons d'action */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.save-btn {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+
+.save-btn:hover {
+  background-color: #5948d6;
+}
+
+.cancel-btn {
+  background-color: #e63946;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background-color: #d32f2f;
+}
+

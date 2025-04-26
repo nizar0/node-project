@@ -1,0 +1,80 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  background: rgba(43, 43, 58, 0.9);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-left: 70px;
+  /* Augmenter la hauteur */
+  width: 100%;
+  height: auto;
+  min-height: 80vh; /* Ajuster selon le contenu */
+  overflow: hidden;
+  padding: 20px; /* Pour donner plus d'espace autour */
+}
+
+.image-section {
+
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  padding: 10px;
+}
+
+.image-section h1 {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 19px;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.image-section img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.form-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: var(--secondary-color);
+  height: auto;
+  overflow-y: auto;
+}
+
+.form-section h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.register-link {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.register-link a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,218 @@
+
+
+.booking-container {
+  background: var(--secondary-color);
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 1000px;
+  margin: 20px auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Booking List - Ensures 4 cards per row */
+.booking-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* Align without extra spaces */
+  gap: 0px; /* Removed unnecessary gaps */
+  padding: 10px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* Booking Card */
+.booking-card {
+  position: relative;
+  background-color: #2b2b3a;
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+  width: calc(32%);
+  max-width: 300px;
+  margin: 5px; /* Small margin for better alignment */
+}
+
+.booking-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Status Indicator - Top Right Above Image */
+.status {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 4px;
+  text-align: center;
+  min-width: 80px;
+  z-index: 2;
+}
+
+/* Status Colors */
+.status.pending {
+  background-color: #ff9800;
+  color: white;
+}
+
+.status.accepted {
+  background-color: #28a745;
+  color: white;
+}
+
+.status.canceled {
+  background-color: #dc3545;
+  color: white;
+}
+
+.status.payed {
+  background-color: #007bff;
+  color: white;
+}
+
+.status.ongoing {
+  background-color: #6c63ff;
+  color: white;
+}
+.status.done {
+  background-color: #63ffd5;
+  color: white;
+}
+
+/* Image Container */
+/* 🖼️ Image Container */
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.yacht-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* 🎯 Next Button */
+.next-btn {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+
+.next-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* Booking Details */
+.booking-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+}
+
+/* Booking Details (Left Side) */
+.booking-details {
+  text-align: left;
+  flex-grow: 1;
+}
+
+/* Booking Actions */
+.booking-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.pay-button, .cancel-button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 120px;
+}
+
+.pay-button {
+  background-color: #007bff;
+  color: white;
+}
+
+.pay-button:hover {
+  background-color: #0056b3;
+}
+
+.cancel-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.cancel-button:hover {
+  background-color: #c82333;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1200px) {
+  .booking-card {
+    width: calc(33.333% - 10px); /* 3 cards per row */
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .booking-card {
+    width: calc(50% - 10px); /* 2 cards per row */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .booking-card {
+    width: 100%; /* 1 card per row on small screens */
+    max-width: 90%;
+  }
+
+  .image-container {
+    height: 160px;
+  }
+
+  .booking-info {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .status {
+    margin-top: 10px;
+  }
+}
+.review-button {
+  background-color: #ffcc00;
+  color: #333;
+  font-weight: bold;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.review-button:hover {
+  background-color: #ffb700;
+}

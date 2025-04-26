@@ -1,0 +1,83 @@
+<header></header>
+<div class="booking-container">
+  <h1>Réserver un Yacht</h1>
+
+  <div class="booking-details">
+    <div class="average-rating" *ngIf="yacht.averageRating">
+      <span *ngFor="let star of [1,2,3,4,5]" class="star"
+            [class.filled]="star <= yacht.averageRating">★</span>
+      <span class="rating-value">{{ yacht.averageRating.toFixed(1) }}/5</span>
+    </div>
+
+    <!-- 📸 Yacht Image Carousel -->
+    <div class="image-carousel">
+      <img [src]="getUrl(yacht.images[currentImageIndex]) || 'assets/img/default-yacht.jpg'"
+           alt="{{ yacht.name }}"
+           class="yacht-image"
+           (mouseenter)="pauseAutoSlide()"
+           (mouseleave)="resumeAutoSlide()"/>
+      <button class="next-btn" (click)="nextImage()">&#10095;</button>
+    </div>
+
+    <div class="yacht-info">
+      <h2>{{ yacht.name }}</h2>
+      <p>{{ yacht.description }}</p>
+      <p>Prix par jour : <strong>{{ yacht.pricePerDay  }}Dt</strong></p>
+    </div>
+  </div>
+
+  <!-- Booking Form -->
+  <div class="booking-form">
+    <form (ngSubmit)="bookYacht()">
+      <div class="form-group">
+        <label for="startDate">Date de début</label>
+        <input id="startDate" type="date" [(ngModel)]="startDate" name="startDate" [min]="minDate" (change)="validateDates()" required />
+      </div>
+
+      <div class="form-group">
+        <label for="endDate">Date de fin</label>
+        <input id="endDate" type="date" [(ngModel)]="endDate" name="endDate" [min]="startDate" (change)="validateDates()" required />
+      </div>
+
+      <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+      <p *ngIf="totalPrice !== null" class="total-price">Prix total : {{ totalPrice }} DT</p>
+      <button type="submit" class="btn" [disabled]="!isAvailable">Réserver</button>
+    </form>
+  </div>
+
+  <div class="reviews-container">
+    <h2>🌟 Avis des clients</h2>
+
+    <div *ngIf="yacht.reviews.length === 0" class="no-reviews">
+      Aucun avis pour ce yacht pour le moment.
+    </div>
+
+    <div class="review-list">
+      <div *ngFor="let review of yacht.reviews" class="review-card">
+        <div class="review-header">
+          <img [src]="getUrl(review.client.image) || 'assets/default-avatar.png'" class="client-avatar" />
+          <div>
+            <h5>{{ review.client.name }}</h5>
+            <p class="date">{{ review.createdAt | date:'yyyy/MM/dd hh:mm a' }}</p>
+          </div>
+        </div>
+
+        <!-- Rating Stars -->
+        <div class="rating">
+          <span *ngFor="let star of [1,2,3,4,5]" class="star" [class.filled]="star <= review.rating">★</span>
+        </div>
+
+        <!-- ✅ Comment Section -->
+        <p *ngIf="!review.expanded" class="review-text">
+          <span>{{ review.comment.length > 100 ? (review.comment | slice:0:100) + '...' : review.comment }}</span>
+          <span *ngIf="review.comment.length > 100" class="read-more" (click)="toggleExpand(review)">Lire la suite</span>
+        </p>
+
+        <p class="full-review-text" *ngIf="review.expanded">
+          {{ review.comment }}
+          <span *ngIf="review.comment.length > 100" class="read-more" (click)="toggleExpand(review)">Lire moins</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

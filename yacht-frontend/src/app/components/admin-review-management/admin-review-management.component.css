@@ -1,0 +1,149 @@
+.admin-container {
+  background: var(--secondary-color);
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 1000px;
+  margin: 20px auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.no-reviews {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.review-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.review-card {
+  background: var(--background-color);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  width: 280px;
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.client-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.review-text {
+  font-size: 14px;
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+.rating {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.star {
+  color: #ccc;
+  cursor: pointer;
+}
+
+.star.filled {
+  color: gold;
+}
+
+.review-actions {
+  display: flex;
+  justify-content: space-between;
+}
+/* Buttons styling */
+.review-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+/* Approuver Button */
+.btn-approve {
+  background: linear-gradient(45deg, #28a745, #218838);
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  transition: 0.3s ease-in-out;
+}
+
+.btn-approve i {
+  margin-right: 8px;
+}
+
+.btn-approve:hover {
+  background: linear-gradient(45deg, #218838, #1e7e34);
+  transform: scale(1.05);
+}
+
+/* Supprimer Button */
+.btn-delete {
+  background: linear-gradient(45deg, #dc3545, #c82333);
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  transition: 0.3s ease-in-out;
+}
+
+.btn-delete i {
+  margin-right: 8px;
+}
+
+.btn-delete:hover {
+  background: linear-gradient(45deg, #c82333, #bd2130);
+  transform: scale(1.05);
+}
+/* Read More Link */
+.read-more {
+  color: #007bff;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+/* Read More Link */
+.read-more {
+  color: #007bff;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+.read-more:hover {
+  text-decoration: underline;
+}
+
+/* Review Text Styling */
+.review-text {
+  color: #fff;
+  font-size: 14px;
+  max-width: 90%;
+  line-height: 1.5;
+  white-space: normal;
+}

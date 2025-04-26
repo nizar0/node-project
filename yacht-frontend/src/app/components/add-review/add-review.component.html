@@ -1,0 +1,33 @@
+<app-header></app-header>
+
+<div class="review-container">
+  <h2 class="text-center">⭐ Laisser un avis sur "{{ yachtName }}"</h2>
+
+  <div class="review-form">
+    <div class="yacht-info">
+      <img [src]="getUrl(yachtImage) || 'assets/default-yacht.jpg'" alt="Yacht Image" class="yacht-image" />
+      <h3>{{ yachtName }}</h3>
+    </div>
+
+    <div class="rating-section">
+      <label for="rating">Votre Note:</label>
+      <div class="stars">
+        <i class="fas fa-star" *ngFor="let star of [1,2,3,4,5]"
+           (click)="setRating(star)"
+           [ngClass]="{'selected': star <= rating}">
+        </i>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="comment">Votre Commentaire:</label>
+      <textarea id="comment" [(ngModel)]="comment" class="form-control" rows="4" placeholder="Partagez votre expérience..."></textarea>
+    </div>
+
+    <button class="btn btn-submit" (click)="submitReview()">Envoyer l'avis</button>
+    <!-- Success Message -->
+    <div *ngIf="successMessage" class="success-message">
+      ✅ Votre avis a été soumis et est en attente de validation.
+    </div>
+  </div>
+</div>

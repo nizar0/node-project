@@ -1,0 +1,41 @@
+.calendar-container {
+  background: var(--secondary-color);
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 1000px;
+  margin: 20px auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.fc-event {
+  font-size: 14px;
+  color: white;
+}
+
+.fc-event:hover {
+  background-color: #6c63ff;
+}
+:host ::ng-deep .booking-pending {
+  background-color: #FFA500 !important; /* Orange for pending */
+  color: #fff !important;
+}
+
+:host ::ng-deep .booking-accepted {
+  background-color: #28A745 !important; /* Green for accepted */
+  color: #fff !important;
+}
+
+:host ::ng-deep .booking-ongoing {
+  background-color: #e331e0 !important; /* Green for accepted */
+  color: #fff !important;
+}
+
+:host ::ng-deep .booking-canceled {
+  background-color: #DC3545 !important; /* Red for canceled */
+  color: #fff !important;
+}
+
+:host ::ng-deep .booking-done {
+  background-color: #686767 !important; /* Red for canceled */
+  color: #fff !important;
+}

@@ -1,0 +1,109 @@
+.payment-container {
+  background: var(--secondary-color);
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 1000px;
+  margin: 20px auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.page-title {
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+/* 📊 Statistics */
+.stats-container {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background: var(--input-bg);
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  width: 24%;
+  font-size: 18px;
+}
+
+.stat-card.success {
+  background: #28a745;
+  color: white;
+}
+
+.stat-card.failed {
+  background: #dc3545;
+  color: white;
+}
+
+.stat-card.total-paid {
+  background: #ffc107;
+  color: black;
+  font-weight: bold;
+}
+
+/* 📊 Chart */
+.chart-container {
+  max-width: 30%;
+  margin: auto;
+}
+
+
+.table-responsive {
+  margin-top: 20px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--background-color);
+  border-radius: 10px;
+}
+
+.table th, .table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--input-bg);
+}
+
+.table th {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* ✅ Status Labels */
+.status-label {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.status-paid {
+  background: #28a745;
+  color: white;
+}
+
+.status-failed {
+  background: #dc3545;
+  color: white;
+}
+
+.status-pending {
+  background: #ffc107;
+  color: black;
+}
+.yacht-cell {
+  width: 80px;
+}
+
+.yacht-image {
+  width: 70px;
+  height: 45px;
+  object-fit: cover;
+  border-radius: 35px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}

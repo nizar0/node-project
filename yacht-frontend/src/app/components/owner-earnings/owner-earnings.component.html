@@ -1,0 +1,36 @@
+<app-header></app-header>
+<div class="earnings-container">
+  <h1>Statistiques des Bénéfices</h1>
+
+  <div class="total-earnings">
+    <h2>Total des Revenus : <span>{{ totalEarnings  }}Dt</span></h2>
+  </div>
+
+  <h3>Statistiques par Yacht</h3>
+  <div class="table-responsive">
+  <table class="table">
+    <thead>
+    <tr>
+      <th></th>
+      <th>Yacht</th>
+      <th>Nombre de Réservations</th>
+      <th>Revenu Total</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let yacht of yachtEarnings; let i = index">
+      <td>
+        <img [src]="getUrl(currentImage[i])" class="yacht-avatar" />
+      </td>
+      <td>{{ yacht.name }}</td>
+      <td>{{ yacht.reservations }}</td>
+      <td>{{ yacht.totalRevenue }} Dt</td>
+    </tr>
+
+    </tbody>
+  </table>
+  </div>
+  <div class="chart-container">
+    <canvas id="earningsChart"></canvas>
+  </div>
+</div>

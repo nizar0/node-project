@@ -1,0 +1,17 @@
+<div class="sidebar">
+  <div class="logo">
+    <div class="profile-picture">
+      <img [src]="user?.image ? getUrlToSideBar(user?.image) : 'assets/default-avatar.png'" alt="Photo de profil" />
+    </div>
+    <h1>{{user?.name}}</h1>
+  </div>
+  <ul class="menu">
+    <li *ngFor="let item of menuItems">
+      <a [routerLink]="item.route" routerLinkActive="active">{{ item.name }}</a>
+    </li>
+  </ul>
+  <div class="logout">
+    <a class="btn-logout" (click)="logout()">Déconnexion</a>
+  </div>
+
+</div>
