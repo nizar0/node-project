@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compte en attente de validation - MASTER YACHT</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .header {
+            background-color: #1a1a2e;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        .header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+        .content h2 {
+            color: #6c63ff;
+        }
+        .content p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #6c63ff;
+        }
+        .footer {
+            background-color: #1a1a2e;
+            color: #aaa;
+            text-align: center;
+            padding: 10px;
+            font-size: 12px;
+        }
+        .footer a {
+            color: #6c63ff;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>MASTER YACHT</h1>
+    </div>
+    <div class="content">
+        <h2>Bonjour, {{name}} !</h2>
+        <p>Votre compte a été <span class="highlight">enregistré avec succès</span>.</p>
+        <p>✅ La validation de votre compte sera effectuée dans les plus brefs délais.</p>
+        <p>📧 <strong>Vous recevrez un e-mail</strong> dès que votre compte sera validé.</p>
+        <p>Merci de votre patience !</p>
+    </div>
+    <div class="footer">
+        <p>© MASTER YACHT. Tous droits réservés.</p>
+    </div>
+</div>
+</body>
+</html>

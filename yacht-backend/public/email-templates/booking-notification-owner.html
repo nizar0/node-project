@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nouvelle Réservation - MASTER YACHT</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    .header {
+      background-color: #1a1a2e;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+    .header h1 {
+      font-size: 22px;
+      margin: 0;
+    }
+    .content {
+      padding: 20px;
+    }
+    .content h2 {
+      color: #6c63ff;
+      margin-bottom: 10px;
+    }
+    .content p {
+      margin: 10px 0;
+    }
+    .details {
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+      font-size: 16px;
+    }
+    .details p {
+      margin: 5px 0;
+      font-weight: bold;
+    }
+    .details span {
+      font-weight: normal;
+      color: #333;
+    }
+    .cta-button {
+      display: inline-block;
+      background-color: #6c63ff;
+      color: #fff;
+      padding: 12px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 20px;
+      text-align: center;
+      display: block;
+    }
+    .cta-button:hover {
+      background-color: #5948d6;
+    }
+    .footer {
+      background-color: #1a1a2e;
+      color: #aaa;
+      text-align: center;
+      padding: 10px;
+      font-size: 12px;
+    }
+    .footer a {
+      color: #6c63ff;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Nouvelle Réservation Confirmée</h1>
+  </div>
+  <div class="content">
+    <h2>Bonjour, {{name}} 👋</h2>
+    <p>Une nouvelle réservation a été effectuée pour votre yacht "<strong>{{yachtName}}</strong>".</p>
+
+    <div class="details">
+      <p> Date de début: <span>{{startDate}}</span></p>
+      <p> Date de fin: <span>{{endDate}}</span></p>
+      <p> Client: <span>{{clientName}}</span></p>
+      <p> Prix total: <span>{{totalPrice}} DT</span></p>
+    </div>
+
+    <p>Veuillez vous connecter à votre tableau de bord pour gérer cette réservation.</p>
+    <a href="http://localhost:4200/dashboard/owner/bookings" class="cta-button">Voir la réservation</a>
+  </div>
+  <div class="footer">
+    <p>© 2025 MASTER YACHT. Tous droits réservés.</p>
+    <p><a href="#">Mentions légales</a> | <a href="#">Politique de confidentialité</a></p>
+  </div>
+</div>
+</body>
+</html>

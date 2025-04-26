@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statut de réservation mis à jour</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .header {
+            background-color: #1a1a2e;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        .header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+        .content {
+            padding: 20px;
+        }
+        .content h2 {
+            color: #6c63ff;
+        }
+        .content p {
+            margin: 10px 0;
+        }
+        .content .details {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .content .details p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+
+
+        .content .status {
+            font-weight: bold;
+            font-size: 18px;
+            color: #28a745; /* Default: Vert pour "En cours" */
+        }
+        .content .status.cancelled {
+            color: #e63946; /* Rouge pour "Annulée" */
+        }
+        .content .status.done {
+            color: #007bff; /* Bleu pour "Terminée" */
+        }
+        .content a {
+            display: inline-block;
+            background-color: #6c63ff;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .content a:hover {
+            background-color: #5948d6;
+        }
+        .footer {
+            background-color: #1a1a2e;
+            color: #aaa;
+            text-align: center;
+            padding: 10px;
+            font-size: 12px;
+        }
+        .footer a {
+            color: #6c63ff;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Statut de votre réservation</h1>
+    </div>
+    <div class="content">
+        <h2>Bonjour, {{name}} !</h2>
+        <p>Nous souhaitons vous informer que le statut de votre réservation pour le yacht <strong>{{yachtName}}</strong> a été mis à jour.</p>
+
+        <div class="details">
+            <p><strong>Yacht :</strong> {{yachtName}}</p>
+            <p><strong>Statut :</strong>
+                <span class="status {{statusClass}}">
+                    {{status}}
+                </span>
+            </p>
+            <p><strong>Date de début :</strong> {{startDate}}</p>
+            <p><strong>Date de fin :</strong> {{endDate}}</p>
+            <p><strong>Prix total :</strong> {{totalPrice}} DT</p>
+        </div>
+
+        <p>Merci de nous avoir fait confiance. Si vous avez des questions, n'hésitez pas à nous contacter.</p>
+        <a href="http://localhost:4200/dashboard/client/bookings/{{bookingId}}" target="_blank">Voir les détails</a>
+    </div>
+    <div class="footer">
+        <p>© MASTER YACHT. Tous droits réservés.</p>
+    </div>
+</div>
+</body>
+</html>

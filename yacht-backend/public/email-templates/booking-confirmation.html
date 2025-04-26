@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réservation Confirmée - MASTER YACHT</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .header {
+            background-color: #1a1a2e;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        .header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+        .content {
+            padding: 20px;
+        }
+        .content h2 {
+            color: #6c63ff;
+        }
+        .content p {
+            margin: 10px 0;
+        }
+        .footer {
+            background-color: #1a1a2e;
+            color: #aaa;
+            text-align: center;
+            padding: 10px;
+            font-size: 12px;
+        }
+        .footer a {
+            color: #6c63ff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>MASTER YACHT - Réservation</h1>
+    </div>
+    <div class="content">
+        <h2>Bonjour, {{name}} !</h2>
+        <p>Votre réservation pour le yacht <strong>{{yachtName}}</strong> a été enregistrée.</p>
+        <p>Dates : <strong>{{startDate}}</strong> au <strong>{{endDate}}</strong></p>
+        <p>Prix total : <strong>{{totalPrice}}Dt</strong></p>
+        <p>Le propriétaire du yacht examinera votre réservation et vous en informera dès que possible.</p>
+        <p>Merci d'avoir choisi MASTER YACHT.</p>
+    </div>
+    <div class="footer">
+        <p>© MASTER YACHT. Tous droits réservés.</p>
+    </div>
+</div>
+</body>
+</html>
