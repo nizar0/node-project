@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { YachtService } from '../../services/yachtService/yacht.service';
-import { NgClass, NgForOf, NgIf, SlicePipe} from '@angular/common';
+import { NgClass, SlicePipe } from '@angular/common';
 import { getUrl, showAlert } from '../../constants/functions';
 import { AuthService } from '../../services/authService/auth.service';
 import { Router } from '@angular/router';
@@ -12,15 +12,12 @@ import {WebSocketService} from '../../services/webSocketService/web-socket.servi
 @Component({
   selector: 'app-yacht-list',
   imports: [
-
-    NgIf,
-    NgForOf,
     NgClass,
     HeaderComponent,
     GoogleMap,
     MapMarker,
-    SlicePipe,
-  ],
+    SlicePipe
+],
   templateUrl: './yacht-list.component.html',
   standalone: true,
   styleUrl: './yacht-list.component.css'

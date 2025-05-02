@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {BookingService} from '../../services/bookingService/booking.service';
 import {ToastrService} from 'ngx-toastr';
-import {DatePipe, NgClass, NgForOf, NgIf} from '@angular/common';
+import { DatePipe, NgClass } from '@angular/common';
 import {getUrl, showAlert} from '../../constants/functions';
 import {HeaderComponent} from '../header/header.component';
 import {WebSocketService} from '../../services/webSocketService/web-socket.service';
@@ -15,13 +15,10 @@ import {ReviewService} from '../../services/reviewService/review.service';
   standalone: true,
   imports: [
     NgClass,
-    NgForOf,
-    NgIf,
     DatePipe,
     HeaderComponent,
-    PaymentModalComponent,
-
-  ],
+    PaymentModalComponent
+],
   styleUrl: './client-bookings.component.css'
 })
 export class ClientBookingsComponent implements OnInit {

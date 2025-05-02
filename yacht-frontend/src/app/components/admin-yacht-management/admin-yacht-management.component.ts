@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AdminService} from '../../services/adminService/admin.service';
 import {ToastrService} from 'ngx-toastr';
 import {getUrl} from '../../constants/functions';
-import {NgClass, NgForOf, NgIf} from '@angular/common';
+import { NgClass } from '@angular/common';
 import {HeaderComponent} from '../header/header.component';
 import {GoogleMap, MapMarker} from '@angular/google-maps';
 
@@ -10,12 +10,10 @@ import {GoogleMap, MapMarker} from '@angular/google-maps';
   selector: 'app-admin-yacht-management',
   imports: [
     NgClass,
-    NgForOf,
-    NgIf,
     HeaderComponent,
     GoogleMap,
     MapMarker
-  ],
+],
   templateUrl: './admin-yacht-management.component.html',
   standalone: true,
   styleUrl: './admin-yacht-management.component.css'

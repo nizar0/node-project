@@ -12,10 +12,12 @@
     <div class="rating-section">
       <label for="rating">Votre Note:</label>
       <div class="stars">
-        <i class="fas fa-star" *ngFor="let star of [1,2,3,4,5]"
-           (click)="setRating(star)"
-           [ngClass]="{'selected': star <= rating}">
-        </i>
+        @for (star of [1,2,3,4,5]; track star) {
+          <i class="fas fa-star"
+            (click)="setRating(star)"
+            [ngClass]="{'selected': star <= rating}">
+          </i>
+        }
       </div>
     </div>
 
@@ -26,8 +28,10 @@
 
     <button class="btn btn-submit" (click)="submitReview()">Envoyer l'avis</button>
     <!-- Success Message -->
-    <div *ngIf="successMessage" class="success-message">
-      ✅ Votre avis a été soumis et est en attente de validation.
-    </div>
+    @if (successMessage) {
+      <div class="success-message">
+        ✅ Votre avis a été soumis et est en attente de validation.
+      </div>
+    }
   </div>
 </div>

@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {YachtService} from '../../services/yachtService/yacht.service';
 import {ToastrService} from 'ngx-toastr';
 import {ReviewService} from '../../services/reviewService/review.service';
-import {NgClass, NgForOf, NgIf} from '@angular/common';
+import { NgClass } from '@angular/common';
 import {getUrl} from '../../constants/functions';
 import {FormsModule} from '@angular/forms';
 import {HeaderComponent} from '../header/header.component';
@@ -13,11 +13,9 @@ import {BookingService} from '../../services/bookingService/booking.service';
   selector: 'app-add-review',
   imports: [
     NgClass,
-    NgForOf,
     FormsModule,
-    HeaderComponent,
-    NgIf
-  ],
+    HeaderComponent
+],
   templateUrl: './add-review.component.html',
   standalone: true,
   styleUrl: './add-review.component.css'

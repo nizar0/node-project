@@ -1,17 +1,21 @@
 <app-header></app-header>
 
 <div class="payment-success-container">
-  <div *ngIf="isLoading" class="loading">
-    <div class="loader">
-      <div></div>
-      <div></div>
-      <div></div>
+  @if (isLoading) {
+    <div class="loading">
+      <div class="loader">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <p>Traitement du paiement en cours...</p>
     </div>
-    <p>Traitement du paiement en cours...</p>
-  </div>
+  }
 
-  <div *ngIf="!isLoading && paymentSuccess" class="success-message">
-    <h2>Paiement effectué avec succès ! 🎉</h2>
-    <p>Vous serez redirigé automatiquement vers vos réservations dans <span id="countdown">{{count}}</span> secondes...</p>
-  </div>
+  @if (!isLoading && paymentSuccess) {
+    <div class="success-message">
+      <h2>Paiement effectué avec succès ! 🎉</h2>
+      <p>Vous serez redirigé automatiquement vers vos réservations dans <span id="countdown">{{count}}</span> secondes...</p>
+    </div>
+  }
 </div>

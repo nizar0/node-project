@@ -1,16 +1,17 @@
 <!-- Modal Wrapper -->
-<div class="modal-overlay" *ngIf="isModalOpen">
-  <div class="modal-content">
-    <button class="close-button" (click)="closeModal()">×</button>
-
-    <h2>Paiement sécurisé</h2>
-
-    <div #paymentElement class="stripe-payment-container"></div>
-
-    <div class="modal-actions" *ngIf="isFormLoaded">
-      <button class="pay-button" (click)="handlePayment()">Payer</button>
-      <button class="cancel-button" (click)="closeModal()">Annuler</button>
+@if (isModalOpen) {
+  <div class="modal-overlay">
+    <div class="modal-content">
+      <button class="close-button" (click)="closeModal()">×</button>
+      <h2>Paiement sécurisé</h2>
+      <div #paymentElement class="stripe-payment-container"></div>
+      @if (isFormLoaded) {
+        <div class="modal-actions">
+          <button class="pay-button" (click)="handlePayment()">Payer</button>
+          <button class="cancel-button" (click)="closeModal()">Annuler</button>
+        </div>
+      }
     </div>
   </div>
-</div>
+}
 

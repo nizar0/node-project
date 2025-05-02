@@ -4,15 +4,14 @@ import {Role} from '../../constants/Role.enum';
 import {AuthService} from '../../services/authService/auth.service';
 import {User} from '../../constants/User';
 import {RouterLink} from '@angular/router';
-import {NgForOf} from '@angular/common';
+
 import {getUrl, getUrlToSideBar} from '../../constants/functions';
 
 @Component({
   selector: 'app-sidebar',
   imports: [
-    RouterLink,
-    NgForOf
-  ],
+    RouterLink
+],
   templateUrl: './sidebar.component.html',
   standalone: true,
   styleUrl: './sidebar.component.css'

@@ -2,7 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {YachtService} from '../../services/yachtService/yacht.service';
 import {BookingService} from '../../services/bookingService/booking.service';
-import {CurrencyPipe, DatePipe, NgClass, NgForOf, NgIf, SlicePipe} from '@angular/common';
+import { CurrencyPipe, DatePipe, NgClass, SlicePipe } from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {getUrl, showAlert} from '../../constants/functions';
 import {AuthService} from '../../services/authService/auth.service';
@@ -13,12 +13,10 @@ import {HeaderComponent} from '../header/header.component';
   imports: [
     CurrencyPipe,
     FormsModule,
-    NgIf,
     HeaderComponent,
-    NgForOf,
     DatePipe,
     SlicePipe
-  ],
+],
   templateUrl: './booking.component.html',
   standalone: true,
   styleUrl: './booking.component.css'

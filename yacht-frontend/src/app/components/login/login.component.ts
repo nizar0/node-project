@@ -4,11 +4,13 @@ import {Router} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {AuthService} from '../../services/authService/auth.service';
 import {showAlert} from '../../constants/functions';
+import {NgOptimizedImage} from '@angular/common';
 
 @Component({
   selector: 'app-login',
   imports: [
-    FormsModule
+    FormsModule,
+    NgOptimizedImage
   ],
   templateUrl: './login.component.html',
   standalone: true,
@@ -30,7 +32,7 @@ export class LoginComponent {
         localStorage.setItem('jwt', response.token);
         if (response.user.role !== 'admin'){
           this.router.navigate([`dashboard/${response.user.role}/list`]);
-
+          const user = this.authService.getUser();
         }
         else {
           this.router.navigate([`dashboard/admin`]);

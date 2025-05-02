@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import Chart from 'chart.js/auto';
 import {HeaderComponent} from '../header/header.component';
-import {NgForOf} from '@angular/common';
+
 import {HttpClient} from '@angular/common/http';
 import {OrderService} from '../../services/orderService/order.service';
 import {getUrl} from '../../constants/functions';
@@ -9,9 +9,8 @@ import {getUrl} from '../../constants/functions';
 @Component({
   selector: 'app-owner-earnings',
   imports: [
-    HeaderComponent,
-    NgForOf
-  ],
+    HeaderComponent
+],
   templateUrl: './owner-earnings.component.html',
   standalone: true,
   styleUrl: './owner-earnings.component.css'

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../services/adminService/admin.service';
 import { ToastrService } from 'ngx-toastr';
 import {User} from '../../constants/User';
-import {NgClass, NgForOf, NgIf} from '@angular/common';
+import { NgClass } from '@angular/common';
 import {getUrl} from '../../constants/functions';
 import {FormsModule} from '@angular/forms';
 import {HeaderComponent} from '../header/header.component';
@@ -12,12 +12,10 @@ import {HeaderComponent} from '../header/header.component';
   templateUrl: './admin-user-management.component.html',
   styleUrl: './admin-user-management.component.css',
   imports: [
-    NgForOf,
     NgClass,
-    NgIf,
     FormsModule,
     HeaderComponent
-  ],
+],
   standalone: true
 })
 export class AdminUserManagementComponent implements OnInit {

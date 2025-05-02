@@ -2,27 +2,29 @@
 <div class="booking-container">
   <h2>Mes Réservations</h2>
 
-  <div *ngIf="bookings.length === 0" class="no-bookings">
-    Vous n'avez aucune réservation en cours.
-  </div>
+  @if (bookings.length === 0) {
+    <div class="no-bookings">
+      Vous n'avez aucune réservation en cours.
+    </div>
+  }
 
   <!-- Booking List -->
   <div class="booking-list">
-    <div *ngFor="let booking of bookings" class="booking-card">
-      <div class="image-container">
-        <!-- Display yacht images dynamically -->
-        <img
-          [src]="getUrl(booking.yacht.images[currentImageIndex[booking._id]]) || 'assets/default-yacht.jpg'"
-          alt="Yacht Image"
-          class="yacht-image"
-        />
-        <!-- Next Button for Image Navigation -->
-        <button class="next-btn" (click)="nextImage(booking, $event)">&#10095;</button>
-      </div>
-
-      <div class="booking-details">
-        <h3>{{ booking.yacht.name }}</h3>
-        <p>
+    @for (booking of bookings; track booking) {
+      <div class="booking-card">
+        <div class="image-container">
+          <!-- Display yacht images dynamically -->
+          <img
+            [src]="getUrl(booking.yacht.images[currentImageIndex[booking._id]]) || 'assets/default-yacht.jpg'"
+            alt="Yacht Image"
+            class="yacht-image"
+            />
+            <!-- Next Button for Image Navigation -->
+            <button class="next-btn" (click)="nextImage(booking, $event)">&#10095;</button>
+          </div>
+          <div class="booking-details">
+            <h3>{{ booking.yacht.name }}</h3>
+            <p>
           <span class="status" [ngClass]="{
             'pending': booking.status === 'pending',
             'accepted': booking.status === 'accepted',
@@ -31,32 +33,43 @@
             'ongoing': booking.status === 'ongoing',
             'done': booking.status === 'done'
           }">
-            {{ booking.status === 'pending' ? 'En attente' :
-            booking.status === 'accepted' ? 'Accepté' :
-              booking.status === 'canceled' ? 'Annulé' :
+                {{ booking.status === 'pending' ? 'En attente' :
+                booking.status === 'accepted' ? 'Accepté' :
+                booking.status === 'canceled' ? 'Annulé' :
                 booking.status === 'payed' ? 'Payé' :
-                  booking.status === 'ongoing' ? 'En cours' :
-                    booking.status === 'done' ? 'Terminé' : '' }}
-          </span>
-        </p>
-
-        <p><strong>Date:</strong> {{ booking.startDate | date:'mediumDate' }} - {{ booking.endDate | date:'mediumDate' }}</p>
-        <p><strong>Prix total:</strong> {{ booking.totalPrice }} DT</p>
-
-        <!-- Booking Actions -->
-        <div class="booking-actions">
-          <button *ngIf="booking.status === 'accepted'" class="pay-button" (click)="paymentModal.openPaymentModal(booking)">Payer</button>
-          <button *ngIf="booking.status === 'accepted'" class="cancel-button" (click)="cancelBooking(booking._id)">Annuler</button>
-          <p *ngIf="booking.status === 'payed'" class="status-message">✅ Payé</p>
-          <p *ngIf="booking.status === 'ongoing'" class="status-message">⏳ En cours</p>
-          <p *ngIf="booking.status === 'done'" class="status-message">🏁 Terminé</p>
-          <button *ngIf="booking.status === 'done' && !booking.hasReviewed" class="review-button" (click)="goToAddReview(booking._id)">
-            ⭐ Donner un avis
-          </button>
+                booking.status === 'ongoing' ? 'En cours' :
+                booking.status === 'done' ? 'Terminé' : '' }}
+              </span>
+            </p>
+            <p><strong>Date:</strong> {{ booking.startDate | date:'mediumDate' }} - {{ booking.endDate | date:'mediumDate' }}</p>
+            <p><strong>Prix total:</strong> {{ booking.totalPrice }} DT</p>
+            <!-- Booking Actions -->
+            <div class="booking-actions">
+              @if (booking.status === 'accepted') {
+                <button class="pay-button" (click)="paymentModal.openPaymentModal(booking)">Payer</button>
+              }
+              @if (booking.status === 'accepted') {
+                <button class="cancel-button" (click)="cancelBooking(booking._id)">Annuler</button>
+              }
+              @if (booking.status === 'payed') {
+                <p class="status-message">✅ Payé</p>
+              }
+              @if (booking.status === 'ongoing') {
+                <p class="status-message">⏳ En cours</p>
+              }
+              @if (booking.status === 'done') {
+                <p class="status-message">🏁 Terminé</p>
+              }
+              @if (booking.status === 'done' && !booking.hasReviewed) {
+                <button class="review-button" (click)="goToAddReview(booking._id)">
+                  ⭐ Donner un avis
+                </button>
+              }
+            </div>
+          </div>
         </div>
-      </div>
+      }
     </div>
   </div>
-</div>
 
-<app-payment-modal #paymentModal></app-payment-modal>
+  <app-payment-modal #paymentModal></app-payment-modal>

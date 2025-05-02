@@ -1,18 +1,25 @@
 <div class="app-container">
-  <header class="app-header" *ngIf="showSidebar">
-  </header>
+  @if (showSidebar) {
+    <header class="app-header">
+    </header>
+
+
+  }
   <main class="app-main">
-    <div *ngIf="showSidebar; else noSidebar" class="dashboard-layout">
-      <app-sidebar></app-sidebar>
-      <div class="content">
-        <router-outlet></router-outlet>
+    @if (showSidebar) {
+      <div class="dashboard-layout">
+        <app-sidebar></app-sidebar>
+        <div  class="content">
+          <router-outlet></router-outlet>
+        </div>
       </div>
-    </div>
-    <ng-template #noSidebar>
+    } @else {
       <router-outlet></router-outlet>
-    </ng-template>
+    }
   </main>
-  <footer class="app-footer" *ngIf="showSidebar">
-    <!-- Footer Content -->
-  </footer>
+  @if (showSidebar) {
+    <footer class="app-footer">
+      <!-- Footer Content -->
+    </footer>
+  }
 </div>

@@ -5,66 +5,86 @@
   <!-- Tab Buttons -->
   <div class="tab-buttons">
     <button class="tab-btn"
-            [ngClass]="{ 'active': selectedTab === 'owners' }"
-            (click)="selectTab('owners')">
+      [ngClass]="{ 'active': selectedTab === 'owners' }"
+      (click)="selectTab('owners')">
       Owners
     </button>
     <button class="tab-btn"
-            [ngClass]="{ 'active': selectedTab === 'clients' }"
-            (click)="selectTab('clients')">
+      [ngClass]="{ 'active': selectedTab === 'clients' }"
+      (click)="selectTab('clients')">
       Clients
     </button>
   </div>
 
   <div class="filter-container">
     <input type="text"
-           class="filter-input"
-           placeholder="Rechercher un utilisateur..."
-           [(ngModel)]="searchQuery"
-           (input)="filterUsers()">
-  </div>
-
-  <div class="tab-content">
-    <!-- 🔹 Owners Tab -->
-    <div *ngIf="selectedTab === 'owners'">
-      <h3>Propriétaires</h3>
-
-      <p *ngIf="filteredOwners.length === 0" class="no-data">Aucun propriétaire trouvé.</p>
-
-      <div class="card-container">
-        <div *ngFor="let owner of filteredOwners" class="user-card">
-          <img [src]="getUrl(owner.image) || 'assets/default-avatar.png'" class="user-avatar" />
-          <h5>{{ owner.name }}</h5>
-          <p>Email: {{ owner.email }}</p>
-          <div class="user-status">{{!owner.isValidatedByAdmin ? '⏳ En attente' :'✅ Approuvé' }}</div>
-          <div class="action-buttons">
-            <button class="btn btn-success" *ngIf ="!owner.isValidatedByAdmin" (click)="approveUser(owner._id)">✅ Approuver</button>
-            <button class="btn btn-danger" *ngIf ="!owner.isBlockedByAdmin && owner.isValidatedByAdmin" (click)="blockUser(owner._id)">🚫 Bloquer</button>
-            <button class="btn btn-success"  *ngIf ="owner.isBlockedByAdmin && owner.isValidatedByAdmin" (click)="deblockUser(owner._id)">✅ Débloquer</button>
-          </div>
-        </div>
-      </div>
+      class="filter-input"
+      placeholder="Rechercher un utilisateur..."
+      [(ngModel)]="searchQuery"
+      (input)="filterUsers()">
     </div>
 
-    <!-- 🔹 Clients Tab -->
-    <div *ngIf="selectedTab === 'clients'">
-      <h3>Clients</h3>
-
-      <p *ngIf="filteredClients.length === 0" class="no-data">Aucun client trouvé.</p>
-
-      <div class="card-container">
-        <div *ngFor="let client of filteredClients" class="user-card">
-          <img [src]="getUrl(client.image) || 'assets/default-avatar.png'" class="user-avatar" />
-          <h5>{{ client.name }}</h5>
-          <p>Email: {{ client.email }}</p>
-          <div class="user-status">{{!client.isValidatedByAdmin ? '⏳ En attente' :'✅ Approuvé' }}</div>
-          <div class="action-buttons">
-            <button class="btn btn-success" *ngIf ="!client.isValidatedByAdmin" (click)="approveUser(client._id)">✅ Approuver</button>
-            <button class="btn btn-danger" *ngIf ="!client.isBlockedByAdmin && client.isValidatedByAdmin" (click)="blockUser(client._id)">🚫 Bloquer</button>
-            <button class="btn btn-success"  *ngIf ="client.isBlockedByAdmin && client.isValidatedByAdmin" (click)="deblockUser(client._id)">✅ Débloquer</button>
+    <div class="tab-content">
+      <!-- 🔹 Owners Tab -->
+      @if (selectedTab === 'owners') {
+        <div>
+          <h3>Propriétaires</h3>
+          @if (filteredOwners.length === 0) {
+            <p class="no-data">Aucun propriétaire trouvé.</p>
+          }
+          <div class="card-container">
+            @for (owner of filteredOwners; track owner) {
+              <div class="user-card">
+                <img [src]="getUrl(owner.image) || 'assets/default-avatar.png'" class="user-avatar" />
+                <h5>{{ owner.name }}</h5>
+                <p>Email: {{ owner.email }}</p>
+                <div class="user-status">{{!owner.isValidatedByAdmin ? '⏳ En attente' :'✅ Approuvé' }}</div>
+                <div class="action-buttons">
+                  @if (!owner.isValidatedByAdmin) {
+                    <button class="btn btn-success" (click)="approveUser(owner._id)">✅ Approuver</button>
+                  }
+                  @if (!owner.isBlockedByAdmin && owner.isValidatedByAdmin) {
+                    <button class="btn btn-danger" (click)="blockUser(owner._id)">🚫 Bloquer</button>
+                  }
+                  @if (owner.isBlockedByAdmin && owner.isValidatedByAdmin) {
+                    <button class="btn btn-success"  (click)="deblockUser(owner._id)">✅ Débloquer</button>
+                  }
+                </div>
+              </div>
+            }
           </div>
         </div>
-      </div>
+      }
+
+      <!-- 🔹 Clients Tab -->
+      @if (selectedTab === 'clients') {
+        <div>
+          <h3>Clients</h3>
+          @if (filteredClients.length === 0) {
+            <p class="no-data">Aucun client trouvé.</p>
+          }
+          <div class="card-container">
+            @for (client of filteredClients; track client) {
+              <div class="user-card">
+                <img [src]="getUrl(client.image) || 'assets/default-avatar.png'" class="user-avatar" />
+                <h5>{{ client.name }}</h5>
+                <p>Email: {{ client.email }}</p>
+                <div class="user-status">{{!client.isValidatedByAdmin ? '⏳ En attente' :'✅ Approuvé' }}</div>
+                <div class="action-buttons">
+                  @if (!client.isValidatedByAdmin) {
+                    <button class="btn btn-success" (click)="approveUser(client._id)">✅ Approuver</button>
+                  }
+                  @if (!client.isBlockedByAdmin && client.isValidatedByAdmin) {
+                    <button class="btn btn-danger" (click)="blockUser(client._id)">🚫 Bloquer</button>
+                  }
+                  @if (client.isBlockedByAdmin && client.isValidatedByAdmin) {
+                    <button class="btn btn-success"  (click)="deblockUser(client._id)">✅ Débloquer</button>
+                  }
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      }
     </div>
   </div>
-</div>

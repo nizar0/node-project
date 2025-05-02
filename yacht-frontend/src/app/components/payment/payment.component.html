@@ -29,35 +29,36 @@
   <div class="table-responsive">
     <table class="table">
       <thead>
-      <tr>
-        <th></th>
-        <th>Réservation</th>
-        <th>Montant</th>
-        <th>Date</th>
-        <th>Statut</th>
-      </tr>
+        <tr>
+          <th></th>
+          <th>Réservation</th>
+          <th>Montant</th>
+          <th>Date</th>
+          <th>Statut</th>
+        </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let payment of payments; let i = index">
-        <td class="yacht-cell">
-          <div class="image-container">
-            <img
-              [src]="getUrl(payment.booking.yacht.images[currentImageIndex[payment.booking._id]]) || 'assets/default-yacht.jpg'"
-              class="yacht-image"
-            />
-          </div>
-        </td>
-
-        <td>{{ payment.booking.yacht.name }}</td>
-        <td>{{ payment.totalPrice  }}Dt</td>
-        <td>{{ payment.createdAt | date: 'yyyy/MM/dd HH:mm' }}</td>
-        <td>
-            <span class="status-label" [ngClass]="getStatusClass(payment.status)">
-              {{ getStatusText(payment.status) }}
-            </span>
-        </td>
-      </tr>
-      </tbody>
-    </table>
+        @for (payment of payments; track payment; let i = $index) {
+          <tr>
+            <td class="yacht-cell">
+              <div class="image-container">
+                <img
+                  [src]="getUrl(payment.booking.yacht.images[currentImageIndex[payment.booking._id]]) || 'assets/default-yacht.jpg'"
+                  class="yacht-image"
+                  />
+                </div>
+              </td>
+              <td>{{ payment.booking.yacht.name }}</td>
+              <td>{{ payment.totalPrice  }}Dt</td>
+              <td>{{ payment.createdAt | date: 'yyyy/MM/dd HH:mm' }}</td>
+              <td>
+                <span class="status-label" [ngClass]="getStatusClass(payment.status)">
+                  {{ getStatusText(payment.status) }}
+                </span>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>

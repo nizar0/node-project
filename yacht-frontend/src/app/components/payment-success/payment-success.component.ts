@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { OrderService } from '../../services/orderService/order.service';
 import { BookingService } from '../../services/bookingService/booking.service';
 import { ToastrService } from 'ngx-toastr';
-import {NgIf} from '@angular/common';
+
 import {HeaderComponent} from '../header/header.component';
 
 @Component({
@@ -11,9 +11,8 @@ import {HeaderComponent} from '../header/header.component';
   templateUrl: './payment-success.component.html',
   styleUrl: './payment-success.component.css',
   imports: [
-    NgIf,
     HeaderComponent
-  ],
+],
   standalone: true
 })
 export class PaymentSuccessComponent implements OnInit {

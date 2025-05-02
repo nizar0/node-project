@@ -1,19 +1,17 @@
 import {Component, OnInit} from '@angular/core';
 import {AdminService} from '../../services/adminService/admin.service';
 import {ToastrService} from 'ngx-toastr';
-import {DatePipe, NgForOf, NgIf, SlicePipe} from '@angular/common';
+import { DatePipe, SlicePipe } from '@angular/common';
 import {getUrl} from '../../constants/functions';
 import {HeaderComponent} from '../header/header.component';
 
 @Component({
   selector: 'app-admin-review-management',
   imports: [
-    NgForOf,
-    NgIf,
     DatePipe,
     SlicePipe,
     HeaderComponent
-  ],
+],
   templateUrl: './admin-review-management.component.html',
   standalone: true,
   styleUrl: './admin-review-management.component.css'

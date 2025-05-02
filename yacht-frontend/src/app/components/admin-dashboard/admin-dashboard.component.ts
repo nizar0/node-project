@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../../services/orderService/order.service';
 import Chart from 'chart.js/auto';
-import {DatePipe, NgForOf, NgIf} from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-admin-dashboard',
   imports: [
-    HeaderComponent,
-    NgForOf,
-    NgIf
-  ],
+    HeaderComponent
+],
   templateUrl: './admin-dashboard.component.html',
   standalone: true,
   styleUrl: './admin-dashboard.component.css'

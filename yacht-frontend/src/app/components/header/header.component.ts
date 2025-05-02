@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NotificationService } from '../../services/notificationService/notification.service';
 import { WebSocketService } from '../../services/webSocketService/web-socket.service';
-import {DatePipe, NgForOf, NgIf} from '@angular/common';
+import { DatePipe } from '@angular/common';
 import {ToastrModule, ToastrService} from 'ngx-toastr';
 import {getUrl} from '../../constants/functions';
 import {Router} from '@angular/router';
@@ -11,7 +11,7 @@ import {WeatherService} from '../../services/weatherService/weather.service';
 
 @Component({
   selector: 'app-header',
-  imports: [DatePipe, NgIf, NgForOf, ToastrModule,   FormsModule],
+  imports: [DatePipe, ToastrModule, FormsModule],
   templateUrl: './header.component.html',
   standalone: true,
   styleUrl: './header.component.css',

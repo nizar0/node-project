@@ -1,15 +1,13 @@
 import { Component, AfterViewInit, ElementRef, ViewChild, Input } from '@angular/core';
 import { loadStripe, Stripe, StripeElements, Appearance } from '@stripe/stripe-js';
 import { HttpClient } from '@angular/common/http';
-import {NgIf} from '@angular/common';
+
 
 @Component({
   selector: 'app-payment-modal',
   templateUrl: './payment-modal.component.html',
   styleUrl: './payment-modal.component.css',
-  imports: [
-    NgIf
-  ],
+  imports: [],
   standalone: true
 })
 export class PaymentModalComponent implements AfterViewInit {

@@ -11,7 +11,7 @@ export class WebSocketService {
   private notificationSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   public notificationSubject$ = this.notificationSubject.asObservable();
 
-  private reconnectInterval = 5000; // 5 seconds
+  private reconnectInterval = 5000;
   private isManuallyClosed = false;
    user : any
 

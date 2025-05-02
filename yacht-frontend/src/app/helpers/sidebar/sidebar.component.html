@@ -6,9 +6,11 @@
     <h1>{{user?.name}}</h1>
   </div>
   <ul class="menu">
-    <li *ngFor="let item of menuItems">
-      <a [routerLink]="item.route" routerLinkActive="active">{{ item.name }}</a>
-    </li>
+    @for (item of menuItems; track item) {
+      <li>
+        <a [routerLink]="item.route" routerLinkActive="active">{{ item.name }}</a>
+      </li>
+    }
   </ul>
   <div class="logout">
     <a class="btn-logout" (click)="logout()">Déconnexion</a>

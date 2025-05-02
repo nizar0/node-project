@@ -1,18 +1,17 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import Chart from 'chart.js/auto';
 import {OrderService} from '../../services/orderService/order.service';
-import { DatePipe, NgClass, NgForOf} from '@angular/common';
+import { DatePipe, NgClass } from '@angular/common';
 import {HeaderComponent} from '../header/header.component';
 import {getUrl} from '../../constants/functions';
 
 @Component({
   selector: 'app-payment',
   imports: [
-    NgForOf,
     DatePipe,
     NgClass,
     HeaderComponent
-  ],
+],
   templateUrl: './payment.component.html',
   standalone: true,
   styleUrl: './payment.component.css'

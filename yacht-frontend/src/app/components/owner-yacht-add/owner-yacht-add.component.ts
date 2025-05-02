@@ -6,7 +6,7 @@ import {FormsModule} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {showAlert} from '../../constants/functions';
 import {HeaderComponent} from "../header/header.component";
-import {NgForOf, NgIf} from '@angular/common';
+
 import {GoogleMap, MapMarker} from '@angular/google-maps';
 
 @Component({
@@ -14,11 +14,9 @@ import {GoogleMap, MapMarker} from '@angular/google-maps';
   imports: [
     FormsModule,
     HeaderComponent,
-    NgIf,
     GoogleMap,
-    MapMarker,
-    NgForOf
-  ],
+    MapMarker
+],
   templateUrl: './owner-yacht-add.component.html',
   standalone: true,
   styleUrl: './owner-yacht-add.component.css'

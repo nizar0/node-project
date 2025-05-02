@@ -8,19 +8,23 @@
     <h3>Revenus par Propriétaire</h3>
     <table class="stats-table">
       <thead>
-      <tr>
-        <th>Propriétaire</th>
-        <th>Revenu Total (DT)</th>
-      </tr>
+        <tr>
+          <th>Propriétaire</th>
+          <th>Revenu Total (DT)</th>
+        </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let owner of ownerRevenue; let i = index">
-        <td>{{ owner.ownerName }}</td>
-        <td>{{ owner.revenue > 0 ? (owner.revenue + ' DT') : 'Aucun revenu' }}</td>
-      </tr>
-      <tr *ngIf="ownerRevenue?.length === 0">
-        <td colspan="2" class="no-data">Aucun revenu disponible</td>
-      </tr>
+        @for (owner of ownerRevenue; track owner; let i = $index) {
+          <tr>
+            <td>{{ owner.ownerName }}</td>
+            <td>{{ owner.revenue > 0 ? (owner.revenue + ' DT') : 'Aucun revenu' }}</td>
+          </tr>
+        }
+        @if (ownerRevenue?.length === 0) {
+          <tr>
+            <td colspan="2" class="no-data">Aucun revenu disponible</td>
+          </tr>
+        }
       </tbody>
     </table>
   </div>
@@ -30,14 +34,18 @@
     <div class="chart-container">
       <h3>Revenus par Yacht</h3>
       <canvas id="yachtRevenueChart"></canvas>
-      <p *ngIf="yachtEarnings?.length === 0" class="no-data">Aucune donnée disponible</p>
+      @if (yachtEarnings?.length === 0) {
+        <p class="no-data">Aucune donnée disponible</p>
+      }
     </div>
 
     <!-- Répartition des Paiements Clients -->
     <div class="pie-chart-container">
       <h3>Répartition des Paiements des Clients</h3>
       <canvas id="clientPaymentChart"></canvas>
-      <p *ngIf="clientPayments?.length === 0" class="no-data">Aucune donnée disponible</p>
+      @if (clientPayments?.length === 0) {
+        <p class="no-data">Aucune donnée disponible</p>
+      }
     </div>
   </div>
 
@@ -46,19 +54,23 @@
     <h3>Détails des Paiements Clients</h3>
     <table class="payments-table">
       <thead>
-      <tr>
-        <th>Client</th>
-        <th>Montant (DT)</th>
-      </tr>
+        <tr>
+          <th>Client</th>
+          <th>Montant (DT)</th>
+        </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let payment of clientPayments">
-        <td>{{ payment.clientName }}</td>
-        <td>{{ payment.totalPrice > 0 ? (payment.totalPrice + ' DT') : 'Aucun paiement' }}</td>
-      </tr>
-      <tr *ngIf="clientPayments?.length === 0">
-        <td colspan="2" class="no-data">Aucun paiement enregistré</td>
-      </tr>
+        @for (payment of clientPayments; track payment) {
+          <tr>
+            <td>{{ payment.clientName }}</td>
+            <td>{{ payment.totalPrice > 0 ? (payment.totalPrice + ' DT') : 'Aucun paiement' }}</td>
+          </tr>
+        }
+        @if (clientPayments?.length === 0) {
+          <tr>
+            <td colspan="2" class="no-data">Aucun paiement enregistré</td>
+          </tr>
+        }
       </tbody>
     </table>
   </div>
